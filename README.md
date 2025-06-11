@@ -41,7 +41,6 @@ Siga os passos abaixo para configurar e rodar o projeto em seu ambiente local:
     * Edite o arquivo `.env` e configure as variáveis de ambiente necessárias, especialmente as de conexão com o banco de dados. Exemplo:
         ```env
         DATABASE_URL="postgresql://user:password@db:5432/mydatabase?schema=public"
-        PORT=3000
         ```
         *Certifique-se de que o `DATABASE_URL` no `.env` esteja de acordo com o serviço `db` definido no seu `docker-compose.yml`.*
 
