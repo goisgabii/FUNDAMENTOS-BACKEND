@@ -7,19 +7,15 @@ export class ProductsRepository {
   constructor(private prisma: PrismaService) {}
 
   async findManyRecent(): Promise<Prisma.ProductUncheckedCreateInput[] | null> {
-    const products = this.prisma.product.findMany();
-
-    return products;
+    return await this.prisma.product.findMany();
   }
 
   async findById(id: string): Promise<Prisma.ProductUncheckedCreateInput | null> {
-    const product = this.prisma.product.findUnique({
+    return await this.prisma.product.findUnique({
       where: {
         id,
       }
     });
-
-    return product;
   }
 
   async findByName(name: string): Promise<Prisma.ProductUncheckedCreateInput | null> {
@@ -43,8 +39,8 @@ export class ProductsRepository {
     ]);
   }
 
-  async create(product: Prisma.ProductUncheckedCreateInput): Promise<Prisma.ProductUncheckedCreateInput> {
-    return await this.prisma.product.create({
+  async create(product: Prisma.ProductUncheckedCreateInput): Promise<void> {
+    await this.prisma.product.create({
       data: product,
     });
   }

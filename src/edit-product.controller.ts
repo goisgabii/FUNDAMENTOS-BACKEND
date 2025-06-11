@@ -38,7 +38,7 @@ export class EditProductController {
       tags,
     } = body;
 
-    const product = await this.editProduct.execute({
+    await this.editProduct.execute({
       name,
       description,
       price,
@@ -48,9 +48,5 @@ export class EditProductController {
       tags,
       id,
     });
-
-    return {
-      product
-    };
   }
 }
