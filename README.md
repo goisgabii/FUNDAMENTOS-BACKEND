@@ -1,6 +1,6 @@
 # <Fundamentos Back-end>
 
-<Esta é uma API RESTful desenvolvida com NestJS para gerenciamento de produtos, persistindo dados com Prisma ORM e PostgreSQL, tudo orquestrado via Docker Compose.>
+Esta é uma API RESTful desenvolvida com NestJS para gerenciamento de produtos, persistindo dados com Prisma ORM e PostgreSQL, tudo orquestrado via Docker Compose.
 
 ## 🚀 Tecnologias Utilizadas
 
