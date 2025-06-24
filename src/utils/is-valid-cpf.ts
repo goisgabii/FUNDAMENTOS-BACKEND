@@ -1,3 +1,4 @@
+
 export function isValidCPF(cpf: string): boolean {
   cpf = cpf.replace(/[^\d]+/g, '');
 
