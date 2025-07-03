@@ -23,8 +23,8 @@ import { GetOrderByUserIdService } from "./service/get-orders-by-id-user.service
 		DeleteUserController,
 		EditUserController,
 		GetUsersByIdController,
-		UpdateProfileUserController,
 		GetOrdersByUserIdController,
+		
 	],
 	providers: [
 		PrismaService,
@@ -32,7 +32,6 @@ import { GetOrderByUserIdService } from "./service/get-orders-by-id-user.service
 		DeleteUserService,
 		EditUsersService,
 		GetUserByIdService,
-		UpdateProfileUserService,
 		UserRepository,
 		ProfileRepository,
 		GetOrderByUserIdService,

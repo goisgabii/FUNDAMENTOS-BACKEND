@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { Category } from "@prisma/client";
 import { OrdersRepository } from "../repository/order.repository";
 import { ProductsRepository } from "src/product/repository/products.repository";
-import { Prisma } from "generated/prisma";
+
 
 interface CreateOrderServiceRequest {
 	userId: string;

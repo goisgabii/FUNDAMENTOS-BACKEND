@@ -1,0 +1,54 @@
+services:
+  trabalho_nest:
+    image: gabriela202301422.trabalho-docker:latest
+    container_name: trabalho_node
+    command: >
+      sh -c "dockerize -wait tcp://db:5432 -timeout 60s &&
+      npx prisma generate --schema=./prisma/schema.prisma &&
+      npx prisma migrate deploy --schema=./prisma/schema.prisma &&
+      npm run build &&
+      node dist/main"
+    tty: true
+    networks:
+      - trabalho_network
+    depends_on:
+      db:
+        condition: service_healthy
+
+  trabalho-nginx:
+    image: nginx:alpine
+    container_name: trabalho-nginx
+    ports:
+      - 8080:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - trabalho_nest
+    networks:
+      - trabalho_network
+
+  db:
+    container_name: db
+    image: postgres:15-alpine
+    restart: unless-stopped 
+    ports:
+      - 5432:5432
+    tty: true
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: fundamentos-backend
+      PGDATA: /data/postgres
+    volumes:
+      - ./data/pg:/data/postgres
+    networks:
+      - trabalho_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+networks:
+  trabalho_network:
+    driver: bridge
